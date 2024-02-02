@@ -6,7 +6,7 @@
 
 import numpy as np
 from datascience import * 
-from flask import Flask
+from flask import Flask, render_template, request
 
 
 # In[10]:
