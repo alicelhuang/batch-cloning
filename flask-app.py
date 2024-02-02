@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[1]:
 
 
 import numpy as np
@@ -9,7 +9,7 @@ from datascience import *
 from flask import Flask, render_template, request
 
 
-# In[10]:
+# In[2]:
 
 
 app = Flask(__name__)
@@ -22,8 +22,8 @@ def match_sanger_to_eblocks(sanger_sequences, eblock_sequences):
     for sanger in np.arange(num_sangers):
         matches = str()
         for eblock in np.arange(num_eblocks):
-            if eblocks.column('Eblock Sequence').item(eblock).lower() in sanger_sequences.column('Sanger Sequence').item(sanger).lower():
-                matches = matches + eblocks.column('Name').item(eblock)
+            if eblock_sequences.column('Eblock Sequence').item(eblock).lower() in sanger_sequences.column('Sanger Sequence').item(sanger).lower():
+                matches = matches + eblock_sequences.column('Name').item(eblock)
             else:
                 continue
 
