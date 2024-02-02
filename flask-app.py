@@ -35,18 +35,18 @@ def match_sanger_to_eblocks(sanger_sequences, eblock_sequences):
 
 @app.route('/')
 def index():
-    return render_template('index.html')  # Create an HTML file for the form
+    return render_template('upload_form.html')  # Create an HTML file for the form
 
-@app.route('/process', methods=['POST'])
-def process():
-    file_path1 = request.form['file_path1']
-    file_path2 = request.form['file_path2']
+@app.route('/upload', methods=['POST'])
+def upload():
+    uploaded_sanger_file = request.files['sanger_file']
+    uploaded_eblocks_file = request.files['eblocks_file']
 
     try:
-        sanger = Table.read_table(file_path1)
-        eblocks = Table.read_table(file_path2)
+        sanger = Table.read_table(uploaded_sanger_file)
+        eblocks = Table.read_table(uploaded_eblocks_file)
     except FileNotFoundError:
-        return "File not found. Please check the file paths."
+        return "File not found."
 
     output = match_sanger_to_eblocks(sanger, eblocks)
     csv_file_path = "matched.csv"

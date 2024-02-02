@@ -1,0 +1,22 @@
+<!-- upload_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="sanger_file">Sanger Sequences CSV File:</label>
+    <input type="file" name="sanger_file" accept=".csv" required>
+    <br>
+    <label for="eblocks_file">Eblocks Sequences CSV File:</label>
+    <input type="file" name="eblocks_file" accept=".csv" required>
+    <br>
+    <input type="submit" value="Upload">
+</form>
+
+</body>
+</html>
